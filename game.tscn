@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="1_lp700"]
 
 [node name="Game" type="Node2D"]
-position = Vector2(-81, -54)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -16,4 +15,4 @@ texture = ExtResource("1_ib4id")
 [node name="TileMap" parent="." instance=ExtResource("1_bfcbs")]
 
 [node name="Character" parent="." instance=ExtResource("1_lp700")]
-position = Vector2(201, 170)
+position = Vector2(200, 168)

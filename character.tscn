@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2quajhyeyli3"]
+[gd_scene load_steps=8 format=3 uid="uid://c2quajhyeyli3"]
 
 [ext_resource type="Texture2D" uid="uid://6wubrdbgiogc" path="res://Assets/Art/CharacterSheet.png" id="1_vb867"]
 [ext_resource type="Script" path="res://Assets/Scripts/playerMovement.gd" id="2_jinn7"]
@@ -9,7 +9,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +25,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,7 +42,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,7 +58,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,21 +76,17 @@ _data = {
 "walk_up": SubResource("Animation_wbiph")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y63ex"]
-size = Vector2(12, 14)
-
-[node name="Character" type="CharacterBody2D"]
+[node name="Character" type="Area2D"]
 script = ExtResource("2_jinn7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_vb867")
 hframes = 8
 frame = 1
+
+[node name="Camera2D" type="Camera2D" parent="PlayerSprite"]
 
 [node name="CharacterAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_3qwdb")
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_y63ex")
