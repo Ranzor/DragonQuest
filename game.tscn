@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2blfyhb2ho8f"]
+
+[ext_resource type="Texture2D" uid="uid://blgnunw5drwyy" path="res://Assets/Art/dw-10.png" id="1_ib4id"]
+[ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="1_lp700"]
+
+[node name="Game" type="Node2D"]
+position = Vector2(4, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(124, 67)
+scale = Vector2(0.0958156, 0.0667725)
+texture = ExtResource("1_ib4id")
+
+[node name="Character" parent="." instance=ExtResource("1_lp700")]
+position = Vector2(125, 155)
+frame = 1
