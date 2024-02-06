@@ -1,7 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2quajhyeyli3"]
+[gd_scene load_steps=9 format=3 uid="uid://c2quajhyeyli3"]
 
 [ext_resource type="Texture2D" uid="uid://6wubrdbgiogc" path="res://Assets/Art/CharacterSheet.png" id="1_vb867"]
 [ext_resource type="Script" path="res://Assets/Scripts/playerMovement.gd" id="2_jinn7"]
+
+[sub_resource type="Animation" id="Animation_7kbcc"]
+resource_name = "walk_down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_g1p2l"]
+resource_name = "walk_left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_yg7vv"]
 resource_name = "walk_right"
@@ -10,7 +42,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -20,29 +52,13 @@ tracks/0/keys = {
 "values": [6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_g1p2l"]
-resource_name = "walk_left"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [3, 2]
-}
-
 [sub_resource type="Animation" id="Animation_wbiph"]
 resource_name = "walk_up"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,22 +66,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_7kbcc"]
-resource_name = "walk_down"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3qwdb"]
@@ -76,14 +76,21 @@ _data = {
 "walk_up": SubResource("Animation_wbiph")
 }
 
-[node name="Character" type="Sprite2D"]
-position = Vector2(238, 153)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y63ex"]
+size = Vector2(12, 14)
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("2_jinn7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vb867")
 hframes = 8
-frame = 4
-script = ExtResource("2_jinn7")
+frame = 1
 
 [node name="CharacterAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_3qwdb")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y63ex")
