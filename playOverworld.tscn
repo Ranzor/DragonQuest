@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://08tpftmovl0l"]
+
+[ext_resource type="PackedScene" uid="uid://w6mcxy0hp7y5" path="res://overworld.tscn" id="1_dbyx2"]
+[ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="2_kh4tn"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_dbyx2")]
+
+[node name="Character" parent="." instance=ExtResource("2_kh4tn")]
+position = Vector2(200, 215)
