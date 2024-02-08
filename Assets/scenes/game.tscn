@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm2dx0c5es1xu"]
+
+[ext_resource type="Script" path="res://gameManager.gd" id="1_a8i8t"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_a8i8t")
+Scenes = {
+"brecconary": &"res://Assets/playTestMaps/play_beconary.tscn",
+"overworld": &"res://Assets/playTestMaps/playOverworld.tscn",
+"tangentel": &"res://Assets/playTestMaps/play_tantegel.tscn",
+"tangentelCastle": &"res://Assets/playTestMaps/play_tangentel_castle.tscn"
+}

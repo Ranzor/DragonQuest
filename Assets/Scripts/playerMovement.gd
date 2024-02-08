@@ -7,7 +7,7 @@ extends Area2D
 @export var tileSize: int = 16
 
 # assign the tilemap to move on
-@export var tileMap: TileMap
+var tileMap: TileMap
 
 # assign the animation player that handles sprite animation
 @export var animPlayer: AnimationPlayer
@@ -15,11 +15,23 @@ extends Area2D
 # assign the sprite, so its movement can be animated
 @export var sprite: Sprite2D
 
+@export var col: CollisionShape2D
+
+@export_enum("walk_down", "walk_up", "walk_left", "walk_right") var anim: String
+
+var pos = 5
+var timer = 0.5
+
 # set defaults
 var isMoving = false
-var anim = "walk_down"
 
-func _process(_delta):
+func _ready():
+	GetTileMap()
+	SelectSpawn()
+	anim = Character.spawnAnim
+	
+
+func _process(delta):
 	
 	# play the currently "selected" animation
 	if anim:	
@@ -30,7 +42,11 @@ func _process(_delta):
 		return
 		
 	# get player input
-	movement_input()
+	if Character.canMove:
+		movement_input()
+	
+	if not Character.canMove:
+		HandleTransition(delta)
 
 func _physics_process(_delta):
 	
@@ -40,11 +56,13 @@ func _physics_process(_delta):
 		
 	# let the script know that the sprite has caught up and movement to new tile is complete.
 	if global_position == sprite.global_position:
+		print(global_position)
 		isMoving = false
 		return
 	
 	# move the sprite from the previous tile toward the new tile.
 	sprite.global_position = sprite.global_position.move_toward(global_position, speed)
+	col.global_position = col.global_position.move_toward(global_position, speed)
 	
 
 # Handle player input
@@ -88,6 +106,55 @@ func move(direction: Vector2):
 	
 	# move player, the sprite stays behind to be animated
 	isMoving = true	
+	print(Character.canTravel)
 	global_position = tileMap.map_to_local(targetTile)
 	sprite.global_position = tileMap.map_to_local(currentTile)
+	col.global_position = tileMap.map_to_local(currentTile)
+	Character.canTravel = true
+	
+func GetTileMap() -> void:
+	for child in get_tree().root.get_children():		
+		for grandchild in child.get_children():
+			if grandchild is TileMap:
+				print(grandchild)
+				tileMap = grandchild
 
+
+func SelectSpawn() -> void:
+	print("curLoc: " + Character.curLoc)
+	print("prevLoc: " + Character.prevLoc)
+	
+	match Character.curLoc:		
+		"tangentel":
+			if Character.prevLoc == "tangentelCastle":
+				global_position = Vector2(136,120)				
+			elif Character.prevLoc == "overworld":
+				global_position = Vector2(168, 472)
+			pass
+		"tangentelCastle":
+			if Character.prevLoc == "tangentel":
+				global_position = Vector2(248,232)
+				pass
+			else:
+				pass
+		"overworld":
+			if Character.prevLoc == "tangentel":
+				global_position = Vector2(184, 216)
+			elif Character.prevLoc == "brecconary":
+				global_position = Vector2(264,184)				
+			else:
+				pass
+		"brecconary":
+			if Character.prevLoc == "overworld":
+				global_position = Vector2(8,232)
+			else:
+				pass
+		_:
+			global_position = Vector2(200,168)
+		
+func HandleTransition(delta):
+	timer -= delta
+	if timer <= 0:
+		Character.canMove = true
+		timer = 0.5
+	

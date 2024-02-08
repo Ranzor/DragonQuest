@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2blfyhb2ho8f"]
+
+[ext_resource type="PackedScene" uid="uid://bnhpyocj2lf37" path="res://Assets/maps/tantegel_castle.tscn" id="1_bfcbs"]
+[ext_resource type="Texture2D" uid="uid://blgnunw5drwyy" path="res://Assets/Art/dw-10.png" id="1_ib4id"]
+[ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="1_lp700"]
+[ext_resource type="PackedScene" uid="uid://7vi083btw6oy" path="res://Assets/scenes/scene_transition.tscn" id="4_rjfb2"]
+
+[node name="play_tangentel_castle" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(124, 67)
+scale = Vector2(0.0958156, 0.0667725)
+texture = ExtResource("1_ib4id")
+
+[node name="tantegel_castle" parent="." instance=ExtResource("1_bfcbs")]
+
+[node name="Character" parent="." instance=ExtResource("1_lp700")]
+position = Vector2(200, 168)
+anim = "walk_down"
+
+[node name="sceneTransition" parent="." instance=ExtResource("4_rjfb2")]
+position = Vector2(265, 231)
+originArea = "tangentelCastle"
+transitionArea = "tangentel"
+spawnAnimation = "walk_right"

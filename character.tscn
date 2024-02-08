@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2quajhyeyli3"]
+[gd_scene load_steps=9 format=3 uid="uid://c2quajhyeyli3"]
 
 [ext_resource type="Texture2D" uid="uid://6wubrdbgiogc" path="res://Assets/Art/CharacterSheet.png" id="1_vb867"]
 [ext_resource type="Script" path="res://Assets/Scripts/playerMovement.gd" id="2_jinn7"]
@@ -76,10 +76,14 @@ _data = {
 "walk_up": SubResource("Animation_wbiph")
 }
 
-[node name="Character" type="Area2D" node_paths=PackedStringArray("animPlayer", "sprite")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmnel"]
+size = Vector2(14, 16)
+
+[node name="Character" type="Area2D" node_paths=PackedStringArray("animPlayer", "sprite", "col")]
 script = ExtResource("2_jinn7")
 animPlayer = NodePath("CharacterAnimation")
 sprite = NodePath("PlayerSprite")
+col = NodePath("CollisionShape2D")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_vb867")
@@ -91,3 +95,7 @@ hframes = 8
 libraries = {
 "": SubResource("AnimationLibrary_3qwdb")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.70917, 0.728384)
+shape = SubResource("RectangleShape2D_kmnel")

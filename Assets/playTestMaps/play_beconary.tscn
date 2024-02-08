@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b17p64pju6pna"]
+[gd_scene load_steps=4 format=3 uid="uid://b17p64pju6pna"]
 
 [ext_resource type="PackedScene" uid="uid://dcjsgiqvar421" path="res://Assets/maps/brecconary.tscn" id="1_st7vf"]
 [ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="2_px7n7"]
+[ext_resource type="PackedScene" uid="uid://7vi083btw6oy" path="res://Assets/scenes/scene_transition.tscn" id="3_ir61j"]
 
 [node name="playBeconary" type="Node2D"]
 
 [node name="Brecconary" parent="." instance=ExtResource("1_st7vf")]
 
-[node name="Character" parent="." node_paths=PackedStringArray("tileMap") instance=ExtResource("2_px7n7")]
-position = Vector2(7, 232)
-tileMap = NodePath("../Brecconary")
+[node name="sceneTransition" parent="." instance=ExtResource("3_ir61j")]
+position = Vector2(-8, 240)
+scale = Vector2(1, 1.88)
+originArea = "brecconary"
+transitionArea = "overworld"
+spawnAnimation = "walk_down"
+
+[node name="Character" parent="." instance=ExtResource("2_px7n7")]
+position = Vector2(30, 234)

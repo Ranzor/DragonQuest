@@ -1,12 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://08tpftmovl0l"]
+[gd_scene load_steps=4 format=3 uid="uid://08tpftmovl0l"]
 
 [ext_resource type="PackedScene" uid="uid://w6mcxy0hp7y5" path="res://Assets/maps/overworld.tscn" id="1_7mkuw"]
 [ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="2_1supo"]
+[ext_resource type="PackedScene" uid="uid://7vi083btw6oy" path="res://Assets/scenes/scene_transition.tscn" id="3_kjha6"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("1_7mkuw")]
 
-[node name="Character" parent="." node_paths=PackedStringArray("tileMap") instance=ExtResource("2_1supo")]
-position = Vector2(200, 215)
-tileMap = NodePath("../TileMap")
+[node name="sceneTransition2" parent="." instance=ExtResource("3_kjha6")]
+position = Vector2(264, 184)
+originArea = "overworld"
+transitionArea = "brecconary"
+spawnAnimation = "walk_right"
+
+[node name="sceneTransition" parent="." instance=ExtResource("3_kjha6")]
+position = Vector2(184, 216)
+originArea = "overworld"
+transitionArea = "tangentel"
+spawnAnimation = "walk_up"
+
+[node name="Character" parent="." instance=ExtResource("2_1supo")]
+position = Vector2(199, 216)
+anim = "walk_down"

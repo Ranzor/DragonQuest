@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Dragon Quest"
-run/main_scene="res://game.tscn"
+run/main_scene="res://Assets/playTestMaps/play_tangentel_castle.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Assets/scenes/game.tscn"
+Character="*res://PlayerManager.gd"
 
 [display]
 
