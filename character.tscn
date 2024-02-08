@@ -76,13 +76,14 @@ _data = {
 "walk_up": SubResource("Animation_wbiph")
 }
 
-[node name="Character" type="Area2D"]
+[node name="Character" type="Area2D" node_paths=PackedStringArray("animPlayer", "sprite")]
 script = ExtResource("2_jinn7")
+animPlayer = NodePath("CharacterAnimation")
+sprite = NodePath("PlayerSprite")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_vb867")
 hframes = 8
-frame = 1
 
 [node name="Camera2D" type="Camera2D" parent="PlayerSprite"]
 

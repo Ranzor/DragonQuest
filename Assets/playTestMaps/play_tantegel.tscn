@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://djtvp1keev4qf"]
+
+[ext_resource type="PackedScene" uid="uid://hfwu8s4stv2w" path="res://Assets/maps/tantegel.tscn" id="1_e4ta3"]
+[ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="2_8q6kp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CastleTown" parent="." instance=ExtResource("1_e4ta3")]
+
+[node name="Character" parent="." node_paths=PackedStringArray("tileMap") instance=ExtResource("2_8q6kp")]
+position = Vector2(136, 118)
+tileMap = NodePath("../CastleTown")

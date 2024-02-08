@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2blfyhb2ho8f"]
 
-[ext_resource type="PackedScene" uid="uid://bnhpyocj2lf37" path="res://castle.tscn" id="1_bfcbs"]
+[ext_resource type="PackedScene" uid="uid://bnhpyocj2lf37" path="res://Assets/maps/tantegel_castle.tscn" id="1_bfcbs"]
 [ext_resource type="Texture2D" uid="uid://blgnunw5drwyy" path="res://Assets/Art/dw-10.png" id="1_ib4id"]
 [ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="1_lp700"]
 
@@ -14,5 +14,6 @@ texture = ExtResource("1_ib4id")
 
 [node name="TileMap" parent="." instance=ExtResource("1_bfcbs")]
 
-[node name="Character" parent="." instance=ExtResource("1_lp700")]
+[node name="Character" parent="." node_paths=PackedStringArray("tileMap") instance=ExtResource("1_lp700")]
 position = Vector2(200, 168)
+tileMap = NodePath("../TileMap")

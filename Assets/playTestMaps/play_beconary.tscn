@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b17p64pju6pna"]
+
+[ext_resource type="PackedScene" uid="uid://dcjsgiqvar421" path="res://Assets/maps/brecconary.tscn" id="1_st7vf"]
+[ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="2_px7n7"]
+
+[node name="playBeconary" type="Node2D"]
+
+[node name="Brecconary" parent="." instance=ExtResource("1_st7vf")]
+
+[node name="Character" parent="." node_paths=PackedStringArray("tileMap") instance=ExtResource("2_px7n7")]
+position = Vector2(7, 232)
+tileMap = NodePath("../Brecconary")
