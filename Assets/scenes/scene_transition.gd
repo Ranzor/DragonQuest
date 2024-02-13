@@ -13,7 +13,6 @@ func _on_area_entered(_area):
 		Character.canTravel = false
 		Character.canMove = false
 		HandleSwitching(transitionArea)	
-	pass # Replace with function body.
 
 func HandleSwitching(scene):
 	await get_tree().create_timer(0.5).timeout

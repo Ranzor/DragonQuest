@@ -14,9 +14,9 @@ var tileMap: TileMap
 
 # assign the sprite, so its movement can be animated
 @export var sprite: Sprite2D
-
 @export var col: CollisionShape2D
 
+# menu to select starting animation
 @export_enum("walk_down", "walk_up", "walk_left", "walk_right") var anim: String
 
 var pos = 5
@@ -119,7 +119,7 @@ func GetTileMap() -> void:
 				print(grandchild)
 				tileMap = grandchild
 
-
+# selects spawn location based on previous location
 func SelectSpawn() -> void:
 	print("curLoc: " + Character.curLoc)
 	print("prevLoc: " + Character.prevLoc)
@@ -152,6 +152,7 @@ func SelectSpawn() -> void:
 		_:
 			global_position = Vector2(200,168)
 		
+# pause movement during scene transition
 func HandleTransition(delta):
 	timer -= delta
 	if timer <= 0:

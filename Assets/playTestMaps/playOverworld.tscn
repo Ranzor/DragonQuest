@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://08tpftmovl0l"]
+[gd_scene load_steps=5 format=3 uid="uid://08tpftmovl0l"]
 
 [ext_resource type="PackedScene" uid="uid://w6mcxy0hp7y5" path="res://Assets/maps/overworld.tscn" id="1_7mkuw"]
 [ext_resource type="PackedScene" uid="uid://c2quajhyeyli3" path="res://character.tscn" id="2_1supo"]
 [ext_resource type="PackedScene" uid="uid://7vi083btw6oy" path="res://Assets/scenes/scene_transition.tscn" id="3_kjha6"]
+[ext_resource type="PackedScene" uid="uid://sn2aeo80n2q0" path="res://Assets/scenes/battle_screen.tscn" id="4_515no"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,3 +24,6 @@ spawnAnimation = "walk_up"
 [node name="Character" parent="." instance=ExtResource("2_1supo")]
 position = Vector2(199, 216)
 anim = "walk_down"
+
+[node name="BattleScreen" parent="." instance=ExtResource("4_515no")]
+position = Vector2(227, 187)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://sn2aeo80n2q0"]
+
+[ext_resource type="Texture2D" uid="uid://cm33i1gf63wow" path="res://Assets/Art/BattleScreen.png" id="1_omshj"]
+[ext_resource type="Texture2D" uid="uid://duhss2m26ej44" path="res://Assets/Art/monsterSprites.png" id="2_singd"]
+[ext_resource type="Script" path="res://Assets/scenes/Enemy.gd" id="3_4dxqo"]
+
+[node name="BattleScreen" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_omshj")
+
+[node name="Enemy" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_singd")
+hframes = 5
+script = ExtResource("3_4dxqo")
